@@ -34,9 +34,33 @@ for(const computer of cmLinkAll){
     console.log(await computer.textContent());
 }
 
+let buildlinks : Locator = page.locator("//a[starts-with(@href,'/build')]");
+
+let countlinks = await buildlinks.count();
+console.log("First link", await buildlinks.first().textContent())
+console.log("Last link", await buildlinks.last().textContent())
+
+for(let i = 0 ; i < countlinks ; i++)
+{
+    let textlink: any = await buildlinks.nth(i).textContent();
+      let textlink1: any = await buildlinks.nth(i).innerText();
+
+    console.log("textcontent is:" , textlink);
+    console.log("Inner text is:" , textlink1);
+    }
 
 
+    let alllinksTexts = await page.locator("//a").allInnerTexts();
+    
+    console.log("Number of links:", alllinksTexts.length );
 
+   for (let text in alllinksTexts){
+    console.log("Link Text is:" , alllinksTexts[text]);
+   }
+
+   for (let text of  alllinksTexts){
+    console.log("Link Text in of loop:" , text);
+   }
     })
     
 })
