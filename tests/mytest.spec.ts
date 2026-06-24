@@ -1,6 +1,7 @@
 import {test, expect} from '@playwright/test'
 
 test("My First test", {tag : '@sanity'}, async({page})=>{
+console.log('Executing test My First test');
 
 await page.goto("https://automationexercise.com/");
 let pagetitle:string =  await page.title();

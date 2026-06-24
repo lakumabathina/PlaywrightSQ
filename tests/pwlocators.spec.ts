@@ -3,6 +3,8 @@ import {test, expect , Locator} from '@playwright/test'
 test.describe("locators group1" , ()=> {
 test("get By Text" , { tag : '@builtinlocators' } , async({page})=>{
 
+console.log('Executing test get By Text');
+
 await page.goto("https://automationexercise.com/");
 
 await expect(page).toHaveTitle("Automation Exercise");
@@ -17,6 +19,8 @@ await expect(locator2).toBeVisible();
 
 test("get By AltText" , { tag : '@builtinlocators' } , async({page})=>{
 
+console.log('Executing test get By AltText');
+
 await page.goto("https://automationexercise.com/");
 
 await expect(page).toHaveTitle("Automation Exercise");
@@ -29,7 +33,10 @@ await expect(image).toBeVisible();
 
 
 test("get by Role" , { tag: '@builtinlocators'} , async ({page})=>{
-await page.goto("https://automationexercise.com/");
+
+console.log('Executing test get by Role');
+
+ await page.goto("https://automationexercise.com/");
 
 await expect(page).toHaveTitle("Automation Exercise");
 

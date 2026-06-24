@@ -3,6 +3,7 @@ import {test, Locator, expect} from '@playwright/test'
 
 test.beforeEach("Before Each " , async({page})=>{
 
+
 await page.goto("https://www.w3schools.com/html/");
 
 await expect(page).toHaveTitle("HTML Tutorial");
@@ -17,6 +18,7 @@ await expect(htmltabepage).toBeVisible();
 test.describe("XPatch axes" , ()=>{
 
 test("self" , { tag : ['@xpathaxes', '@regression']} , async({page})=>{
+console.log('Executing test self');
 
 
 let germanyLoc:Locator=page.locator("//table[@id='customers']//td[text()='Germany']/self::td");
@@ -27,6 +29,7 @@ await expect(germanyLoc).toHaveText("Germany");
 
 test("parent" , { tag : ['@xpathaxes', '@regression']} , async({page})=>{
 
+console.log('Executing test parent');
 
 //print second row contents
 let rowtwo:Locator = page.locator("//td[text()='Francisco Chang']/parent::tr");
@@ -40,6 +43,7 @@ console.log('Row 2 text is:' , rowtwotext);
 
 test("child" , { tag : ['@xpathaxes', '@regression']} , async({page})=>{
 
+console.log('Executing test child');
 
 
 let secondrowcolumns:Locator[]= await page.locator("//table[@id='customers']//tr[2]/child::td").all();
@@ -66,6 +70,7 @@ for (let i=0; i < loccount1 ; i++)
 
 test("preceding" , { tag : ['@xpathaxes', '@regression']} , async({page})=>{
 
+console.log('Executing test preceding');
 
 //preceeding two elements
 let preceding1:Locator = page.locator("//td[text()='Francisco Chang']/preceding::td[1]");
@@ -85,6 +90,7 @@ expect(preceding2text).toEqual("Germany");
 
 test("precedingSibling" , { tag : ['@xpathaxes', '@regression']} , async({page})=>{
 
+console.log('Executing test precedingSibling');
 
 //preceeding sibling elements
 let precedingsib1:Locator = page.locator("//td[text()='Francisco Chang']/preceding-sibling::td");
@@ -99,6 +105,7 @@ console.log("preceding sibling1 text is",presib1 );
 
 test("Following" , {tag: ['@regression, @xpathaxes']}, async({page})=>{
 
+    console.log('Executing test Following');
 
     let followingfirstloc : Locator = page.locator("//td[text()='Ernst Handel']/following::td[1]");
     
@@ -110,6 +117,7 @@ test("Following" , {tag: ['@regression, @xpathaxes']}, async({page})=>{
 })
 test("FollowingSibling" , {tag: ['@regression, @xpathaxes']}, async({page})=>{
 
+    console.log('Executing test FollowingSibling');
 
     let followingsibloc : Locator = page.locator("//td[text()='Ernst Handel']/following-sibling::td");
     

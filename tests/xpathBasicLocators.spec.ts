@@ -6,6 +6,7 @@ test.describe('XPath Basic Locators' , ()=>{
 test('relative xpath' ,  {
     tag: ['@xpathbasic', '@regression']  }, async({page})=>{
 
+        console.log('Executing test relative xpath');
 await page.goto("https://demowebshop.tricentis.com/");
 await expect(page).toHaveURL("https://demowebshop.tricentis.com/");
 await expect(page).toHaveTitle("Demo Web Shop")
@@ -40,16 +41,16 @@ let countlinks = await buildlinks.count();
 console.log("First link", await buildlinks.first().textContent())
 console.log("Last link", await buildlinks.last().textContent())
 
+/*
 for(let i = 0 ; i < countlinks ; i++)
 {
     let textlink: any = await buildlinks.nth(i).textContent();
       let textlink1: any = await buildlinks.nth(i).innerText();
 
-    console.log("textcontent is:" , textlink);
     console.log("Inner text is:" , textlink1);
     }
 
-
+*/
     let alllinksTexts = await page.locator("//a").allInnerTexts();
     
     console.log("Number of links:", alllinksTexts.length );
@@ -57,10 +58,15 @@ for(let i = 0 ; i < countlinks ; i++)
    for (let text in alllinksTexts){
     console.log("Link Text is:" , alllinksTexts[text]);
    }
-
+/*
    for (let text of  alllinksTexts){
     console.log("Link Text in of loop:" , text);
    }
+*/
+ let googlepluslink:Locator= page.locator("//div[@class='column follow-us']//li[position()=5]");
+ await expect(googlepluslink).toBeVisible();
+
+
     })
     
 })
